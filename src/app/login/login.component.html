@@ -1,0 +1,17 @@
+<form action="/dashboard" method="get">
+  <div class="imgcontainer">
+    <img src="/assets/images/img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" [(ngModel)] = "cred.email" name="email" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" [(ngModel)] = "cred.password" name="password" required>
+
+    <button type="button" (click)="login()">Login</button>
+    <input type="checkbox" checked="checked"> Remember me
+    <span class="psw">Forgot <a routerLink="/forgot">password?</a></span>
+  </div>
+</form>

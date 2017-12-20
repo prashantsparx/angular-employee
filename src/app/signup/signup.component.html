@@ -1,0 +1,26 @@
+<form action="">
+  <div class="imgcontainer">
+    <img src="/assets/images/img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+  <div class="container">
+    <div *ngIf="status_message" class="alert alert-danger">{{status_message}}</div>
+    <label><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" [(ngModel)]="signUpData.name" name="name">
+    <label style="color:red;"><b>{{signup_errors.name}}</b></label><br>
+
+    <label><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" [(ngModel)]="signUpData.email" name="email">
+    <label style="color:red;"><b>{{signup_errors.email}}</b></label><br>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" [(ngModel)]="signUpData.password" name="password">
+    <label style="color:red;"><b>{{signup_errors.password}}</b></label>
+
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" routerLink="/" class="cancelbtn">Cancel</button>
+      <button type="button" (click)="signup()" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
