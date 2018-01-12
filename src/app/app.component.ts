@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {loginComponent} from './login/login.component';
 
 @Component({
   selector: 'my-admin',
@@ -11,20 +12,24 @@ export class AppComponent implements OnInit  {
   loggedIn: boolean = false;
 
   constructor(private _router: Router){
-
-  }
-  logout(): void {
-    localStorage.removeItem('token');
-    this._router.navigate(['/login']);
-  }
-
-  loginChangedHandler($event): void {
-    alert();
-  }
-
-  ngOnInit(){
     if(localStorage.getItem('token')){
       this.loggedIn = true;
     }
   }
+  logout(): void {
+    localStorage.removeItem('token');
+    this.loggedIn = false;
+    this._router.navigate(['/login']);
+  }
+
+  handleLoginChange(event){
+    if(event){
+      this.loggedIn = true;
+    }
+  }
+
+  ngOnInit(){
+    console.log("started");
+  }
+
 }

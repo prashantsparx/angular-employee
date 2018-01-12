@@ -26,10 +26,9 @@ var loginComponent = (function () {
         var _this = this;
         this._authenticateService.authenticate(this.cred).subscribe(function (data) {
             if (data.token != undefined) {
-                console.log(data.token);
                 localStorage.setItem('token', data.token);
                 _this.loginChange.emit(true);
-                _this._router.navigate(['/dashboard']);
+                window.location.href = "/dashboard";
             }
         });
     };
@@ -37,10 +36,11 @@ var loginComponent = (function () {
 }());
 __decorate([
     core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
+    __metadata("design:type", Object)
 ], loginComponent.prototype, "loginChange", void 0);
 loginComponent = __decorate([
     core_1.Component({
+        selector: "login",
         templateUrl: "app/login/login.component.html",
         styleUrls: ["app/login/login.component.css"],
         providers: [authentication_service_1.authenticateService],

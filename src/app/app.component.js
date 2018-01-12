@@ -14,18 +14,22 @@ var AppComponent = (function () {
     function AppComponent(_router) {
         this._router = _router;
         this.loggedIn = false;
-    }
-    AppComponent.prototype.logout = function () {
-        localStorage.removeItem('token');
-        this._router.navigate(['/login']);
-    };
-    AppComponent.prototype.loginChangedHandler = function ($event) {
-        alert();
-    };
-    AppComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('token')) {
             this.loggedIn = true;
         }
+    }
+    AppComponent.prototype.logout = function () {
+        localStorage.removeItem('token');
+        this.loggedIn = false;
+        this._router.navigate(['/login']);
+    };
+    AppComponent.prototype.handleLoginChange = function (event) {
+        if (event) {
+            this.loggedIn = true;
+        }
+    };
+    AppComponent.prototype.ngOnInit = function () {
+        console.log("started");
     };
     return AppComponent;
 }());

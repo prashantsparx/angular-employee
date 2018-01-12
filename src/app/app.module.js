@@ -34,7 +34,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, router_1.RouterModule.forRoot(routes), http_1.HttpModule, forms_1.FormsModule],
         declarations: [app_component_1.AppComponent, login_component_1.loginComponent, notFound_component_1.notFoundComponent, forgot_component_1.forgotComponent, index_component_1.dashboardIndexComponent, sidebar_component_1.sidebarComponent, signup_component_1.signupComponent],
-        bootstrap: [app_component_1.AppComponent]
+        bootstrap: [app_component_1.AppComponent],
     })
 ], AppModule);
 exports.AppModule = AppModule;

@@ -4,6 +4,7 @@ import { Cred } from '../models/Cred';
 import {Router} from '@angular/router';
 
 @Component({
+  selector: "login",
   templateUrl: "app/login/login.component.html",
   styleUrls: ["app/login/login.component.css"],
   providers: [authenticateService],
@@ -13,9 +14,6 @@ export class loginComponent {
   cred: Cred;
   token: string;
 
-  @Output()
-  loginChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   constructor(private _authenticateService: authenticateService, private _router: Router){
     this.cred = {email: "", password: ""};
     this.token = localStorage.getItem('token');
@@ -24,13 +22,15 @@ export class loginComponent {
     }
   }
 
+  @Output()
+  loginChange = new EventEmitter();
+
   login(): void {
     this._authenticateService.authenticate(this.cred).subscribe(data => {
       if(data.token != undefined){
-        console.log(data.token);
         localStorage.setItem('token',data.token);
         this.loginChange.emit(true);
-        this._router.navigate(['/dashboard']);
+        window.location.href="/dashboard";
       }
     })
   }
