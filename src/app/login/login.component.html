@@ -4,6 +4,7 @@
   </div>
 
   <div class="container">
+    <div *ngIf="loginError" class="alert alert-danger">{{loginError}}</div>
     <label><b>Email</b></label>
     <input type="text" placeholder="Enter Email" [(ngModel)] = "cred.email" name="email" required>
 

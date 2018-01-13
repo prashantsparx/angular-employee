@@ -12,101 +12,11 @@
     <th>Salary</th>
     <th>Action</th>
   </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>alfred@gmail.com</td>
-    <td>+206124569</td>
-    <td>$20,000</td>
-    <td>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-    </td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>alfred@gmail.com</td>
-    <td>+206124569</td>
-    <td>$20,000</td>
-    <td>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-    </td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>alfred@gmail.com</td>
-    <td>+206124569</td>
-    <td>$20,000</td>
-    <td>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-    </td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>alfred@gmail.com</td>
-    <td>+206124569</td>
-    <td>$20,000</td>
-    <td>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-    </td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>alfred@gmail.com</td>
-    <td>+206124569</td>
-    <td>$20,000</td>
-    <td>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-    </td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>alfred@gmail.com</td>
-    <td>+206124569</td>
-    <td>$20,000</td>
-    <td>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-    </td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>alfred@gmail.com</td>
-    <td>+206124569</td>
-    <td>$20,000</td>
-    <td>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-    </td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>alfred@gmail.com</td>
-    <td>+206124569</td>
-    <td>$20,000</td>
-    <td>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-    </td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>alfred@gmail.com</td>
-    <td>+206124569</td>
-    <td>$20,000</td>
-    <td>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-    </td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>alfred@gmail.com</td>
-    <td>+206124569</td>
-    <td>$20,000</td>
+  <tr *ngFor="let employee of employeeData">
+    <td>{{employee.name}}</td>
+    <td>{{employee.email}}</td>
+    <td>{{employee.mobile}}</td>
+    <td>₹ {{employee.salary}}</td>
     <td>
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
       <i class="fa fa-trash-o" aria-hidden="true"></i>

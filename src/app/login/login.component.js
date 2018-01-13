@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var authentication_service_1 = require("../login/services/authentication.service");
 var router_1 = require("@angular/router");
@@ -15,11 +16,11 @@ var loginComponent = (function () {
     function loginComponent(_authenticateService, _router) {
         this._authenticateService = _authenticateService;
         this._router = _router;
-        this.loginChange = new core_1.EventEmitter();
+        this.loginError = "";
         this.cred = { email: "", password: "" };
         this.token = localStorage.getItem('token');
         if (this.token != undefined) {
-            this._router.navigate(['/dashboard']);
+            window.location.href = "/dashboard";
         }
     }
     loginComponent.prototype.login = function () {
@@ -27,17 +28,15 @@ var loginComponent = (function () {
         this._authenticateService.authenticate(this.cred).subscribe(function (data) {
             if (data.token != undefined) {
                 localStorage.setItem('token', data.token);
-                _this.loginChange.emit(true);
                 window.location.href = "/dashboard";
+            }
+            else {
+                _this.loginError = "Invalid Email or Password";
             }
         });
     };
     return loginComponent;
 }());
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], loginComponent.prototype, "loginChange", void 0);
 loginComponent = __decorate([
     core_1.Component({
         selector: "login",

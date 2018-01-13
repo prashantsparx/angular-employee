@@ -13,24 +13,24 @@ import {Router} from '@angular/router';
 export class loginComponent {
   cred: Cred;
   token: string;
+  loginError: string = "";
 
   constructor(private _authenticateService: authenticateService, private _router: Router){
     this.cred = {email: "", password: ""};
     this.token = localStorage.getItem('token');
     if(this.token != undefined){
-      this._router.navigate(['/dashboard']);
+      window.location.href="/dashboard";
     }
   }
-
-  @Output()
-  loginChange = new EventEmitter();
 
   login(): void {
     this._authenticateService.authenticate(this.cred).subscribe(data => {
       if(data.token != undefined){
         localStorage.setItem('token',data.token);
-        this.loginChange.emit(true);
         window.location.href="/dashboard";
+      }
+      else{
+        this.loginError = "Invalid Email or Password";
       }
     })
   }

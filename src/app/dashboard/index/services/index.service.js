@@ -12,19 +12,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-var signupService = (function () {
-    function signupService(http) {
+var indexService = (function () {
+    function indexService(http) {
         this.http = http;
+        this.token = localStorage.getItem("token");
     }
-    signupService.prototype.create = function (user) {
-        return this.http.post("http://localhost:8000/api/createUser", user)
+    indexService.prototype.getEmployeeData = function () {
+        return this.http.post("http://localhost:8000/api/getEmployeeData", { "token": this.token })
             .map(function (res) { return res.json(); });
     };
-    return signupService;
+    return indexService;
 }());
-signupService = __decorate([
+indexService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], signupService);
-exports.signupService = signupService;
-//# sourceMappingURL=signup.service.js.map
+], indexService);
+exports.indexService = indexService;
+//# sourceMappingURL=index.service.js.map
