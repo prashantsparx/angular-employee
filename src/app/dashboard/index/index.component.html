@@ -18,8 +18,8 @@
     <td>{{employee.mobile}}</td>
     <td>₹ {{employee.salary}}</td>
     <td>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> |
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
+      <a routerLink="/edit/{{employee.id}}" href="javascript:void(0)" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> |
+      <a (click)="deleteEmployee(employee.id)" href="javascript:void(0)" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
     </td>
   </tr>
 </table>

@@ -17,6 +17,7 @@ const routes: Routes = [
   {path: "signup", component: signupComponent},
   {path: "forgot", component: forgotComponent},
   {path: "dashboard", component: dashboardIndexComponent},
+  {path: "edit/:id", component: dashboardIndexComponent},
   {path: "", pathMatch: "full", redirectTo: "login"},
   {path: "**", component: notFoundComponent}
 ]

@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var index_service_1 = require("../index/services/index.service");
 var router_1 = require("@angular/router");
@@ -20,13 +19,28 @@ var dashboardIndexComponent = (function () {
         this.token = localStorage.getItem("token");
         if (this.token != undefined) {
             this._indexService.getEmployeeData().subscribe(function (data) {
-                _this.employeeData = data;
+                if (data.error != undefined) {
+                    localStorage.setItem("loginError", "Session Expired! Please login again");
+                    localStorage.removeItem("token");
+                    _this._router.navigate(["/login"]);
+                }
+                else {
+                    _this.employeeData = data;
+                }
             });
         }
         else {
             this._router.navigate(["/login"]);
         }
     }
+    dashboardIndexComponent.prototype.deleteEmployee = function (id) {
+        var _this = this;
+        this._indexService.deleteEmployee(id).subscribe(function (data) {
+            _this.employeeData = _this.employeeData.filter(function (employee) {
+                return employee.id != id;
+            });
+        });
+    };
     return dashboardIndexComponent;
 }());
 dashboardIndexComponent = __decorate([

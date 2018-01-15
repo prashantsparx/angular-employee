@@ -21,7 +21,14 @@ class DatabaseSeeder extends Seeder
             'name' => "Prashant Gupta",
             'email' => "prashant2621993@gmail.com",
             'mobile' => "1234567890",
-            'salary' => "20,500",
+            'salary' => "20,000",
+        ]);
+
+        DB::table('employees')->insert([
+            'name' => "Amberish Raj",
+            'email' => "ambu@yopmail.com",
+            'mobile' => "1234567891",
+            'salary' => "40,000",
         ]);
     }
 }

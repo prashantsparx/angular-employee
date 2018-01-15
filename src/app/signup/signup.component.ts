@@ -21,7 +21,8 @@ export class signupComponent {
   }
   signup(): void {
     this._signupService.create(this.signUpData).subscribe(data => {
-      if(data.status){
+      if(data.status){ 
+          localStorage.setItem("signupSuccess","User Signed Up Successfully! Please Login");
           this._router.navigate(['/login']);
       }
       else{

@@ -5,6 +5,7 @@
 
   <div class="container">
     <div *ngIf="loginError" class="alert alert-danger">{{loginError}}</div>
+    <div *ngIf="signupSuccess" class="alert alert-success">{{signupSuccess}}</div>
     <label><b>Email</b></label>
     <input type="text" placeholder="Enter Email" [(ngModel)] = "cred.email" name="email" required>
 

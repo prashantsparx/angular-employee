@@ -19,4 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post("createUser","userController@createUser");
 Route::post("authenticate","userController@authenticate");
-Route::post("getEmployeeData","employeeController@index");
+
+Route::group(['middleware'=>'jwt-auth'], function(){
+	Route::post("getEmployeeData","employeeController@index");
+	Route::post("deleteEmployeeData","employeeController@delete");
+});

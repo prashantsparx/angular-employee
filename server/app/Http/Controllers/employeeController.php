@@ -11,4 +11,9 @@ class employeeController extends Controller
     	$employeeData = employee::get()->toArray();
     	return response()->json($employeeData);
     }
+
+    public function delete(Request $request){
+    	$employeeData = employee::where(["id"=>$request->input('id')])->delete();
+    	return response()->json(["status"=>true]);
+    }
 }

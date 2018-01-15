@@ -17,11 +17,27 @@ export class dashboardIndexComponent {
 		this.token = localStorage.getItem("token");
 		if(this.token != undefined){
 			this._indexService.getEmployeeData().subscribe(data => {
-				this.employeeData = data;
+				if(data.error != undefined){
+					localStorage.setItem("loginError","Session Expired! Please login again");
+					localStorage.removeItem("token");
+					this._router.navigate(["/login"]);
+				}
+				else{
+					this.employeeData = data;
+				}
+				
 			});
 		}
 		else{
 			this._router.navigate(["/login"]);
 		}
+	}
+
+	deleteEmployee(id): void {
+		this._indexService.deleteEmployee(id).subscribe(data => {
+			this.employeeData = this.employeeData.filter(function(employee){
+				return employee.id != id;
+			});
+		});
 	}
 }

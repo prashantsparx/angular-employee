@@ -14,10 +14,19 @@ export class loginComponent {
   cred: Cred;
   token: string;
   loginError: string = "";
+  signupSuccess: string = "";
 
   constructor(private _authenticateService: authenticateService, private _router: Router){
     this.cred = {email: "", password: ""};
     this.token = localStorage.getItem('token');
+    if(localStorage.getItem('loginError') != undefined){
+      this.loginError = localStorage.getItem('loginError');
+      localStorage.removeItem('loginError');
+    }
+    if(localStorage.getItem('signupSuccess') != undefined){
+      this.signupSuccess = localStorage.getItem('signupSuccess');
+      localStorage.removeItem('signupSuccess');
+    }
     if(this.token != undefined){
       window.location.href="/dashboard";
     }

@@ -5,7 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var router_1 = require("@angular/router");
@@ -23,6 +22,7 @@ var routes = [
     { path: "signup", component: signup_component_1.signupComponent },
     { path: "forgot", component: forgot_component_1.forgotComponent },
     { path: "dashboard", component: index_component_1.dashboardIndexComponent },
+    { path: "edit/:id", component: index_component_1.dashboardIndexComponent },
     { path: "", pathMatch: "full", redirectTo: "login" },
     { path: "**", component: notFound_component_1.notFoundComponent }
 ];

@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var authentication_service_1 = require("../login/services/authentication.service");
 var router_1 = require("@angular/router");
@@ -17,8 +16,17 @@ var loginComponent = (function () {
         this._authenticateService = _authenticateService;
         this._router = _router;
         this.loginError = "";
+        this.signupSuccess = "";
         this.cred = { email: "", password: "" };
         this.token = localStorage.getItem('token');
+        if (localStorage.getItem('loginError') != undefined) {
+            this.loginError = localStorage.getItem('loginError');
+            localStorage.removeItem('loginError');
+        }
+        if (localStorage.getItem('signupSuccess') != undefined) {
+            this.signupSuccess = localStorage.getItem('signupSuccess');
+            localStorage.removeItem('signupSuccess');
+        }
         if (this.token != undefined) {
             window.location.href = "/dashboard";
         }

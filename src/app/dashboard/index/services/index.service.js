@@ -8,24 +8,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
+var router_1 = require("@angular/router");
 var indexService = (function () {
-    function indexService(http) {
+    function indexService(http, _router) {
         this.http = http;
+        this._router = _router;
         this.token = localStorage.getItem("token");
     }
     indexService.prototype.getEmployeeData = function () {
-        return this.http.post("http://localhost:8000/api/getEmployeeData", { "token": this.token })
+        var headers = new http_1.Headers();
+        headers.append('Authorization', 'Bearer ' + this.token);
+        return this.http.post("http://localhost:8000/api/getEmployeeData", {}, {
+            headers: headers
+        })
             .map(function (res) { return res.json(); });
+    };
+    indexService.prototype.deleteEmployee = function (id) {
+        var headers = new http_1.Headers();
+        headers.append('Authorization', 'Bearer ' + this.token);
+        return this.http.post("http://localhost:8000/api/deleteEmployeeData", { "id": id }, {
+            headers: headers
+        })
+            .map(function (res) { return res.json(); });
+    };
+    indexService.prototype.editEmployee = function (id) {
+        this._router.navigate(['/edit/' + id]);
     };
     return indexService;
 }());
 indexService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, router_1.Router])
 ], indexService);
 exports.indexService = indexService;
 //# sourceMappingURL=index.service.js.map
