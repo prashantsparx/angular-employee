@@ -23,4 +23,7 @@ Route::post("authenticate","userController@authenticate");
 Route::group(['middleware'=>'jwt-auth'], function(){
 	Route::post("getEmployeeData","employeeController@index");
 	Route::post("deleteEmployeeData","employeeController@delete");
+	Route::get("checkAuth",function(){
+		return response()->json(["status"=>true]);
+	});
 });

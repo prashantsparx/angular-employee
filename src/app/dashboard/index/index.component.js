@@ -16,22 +16,9 @@ var dashboardIndexComponent = (function () {
         var _this = this;
         this._indexService = _indexService;
         this._router = _router;
-        this.token = localStorage.getItem("token");
-        if (this.token != undefined) {
-            this._indexService.getEmployeeData().subscribe(function (data) {
-                if (data.error != undefined) {
-                    localStorage.setItem("loginError", "Session Expired! Please login again");
-                    localStorage.removeItem("token");
-                    _this._router.navigate(["/login"]);
-                }
-                else {
-                    _this.employeeData = data;
-                }
-            });
-        }
-        else {
-            this._router.navigate(["/login"]);
-        }
+        this._indexService.getEmployeeData().subscribe(function (data) {
+            _this.employeeData = data;
+        });
     }
     dashboardIndexComponent.prototype.deleteEmployee = function (id) {
         var _this = this;

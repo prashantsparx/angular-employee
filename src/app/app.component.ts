@@ -18,6 +18,7 @@ export class AppComponent implements OnInit  {
   }
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.setItem("signupSuccess","Successfully Logged Out!")
     this.loggedIn = false;
     this._router.navigate(['/login']);
   }

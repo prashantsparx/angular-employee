@@ -1,8 +1,9 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { authGuard } from './services/authGuard.service';
 
 import { AppComponent }  from './app.component';
 import { loginComponent }  from './login/login.component';
@@ -16,7 +17,7 @@ const routes: Routes = [
   {path: "login", component: loginComponent},
   {path: "signup", component: signupComponent},
   {path: "forgot", component: forgotComponent},
-  {path: "dashboard", component: dashboardIndexComponent},
+  {path: "dashboard", component: dashboardIndexComponent, canActivate: [authGuard]},
   {path: "edit/:id", component: dashboardIndexComponent},
   {path: "", pathMatch: "full", redirectTo: "login"},
   {path: "**", component: notFoundComponent}
@@ -25,6 +26,7 @@ const routes: Routes = [
 @NgModule({
   imports:      [ BrowserModule, RouterModule.forRoot(routes), HttpModule, FormsModule ],
   declarations: [ AppComponent, loginComponent, notFoundComponent, forgotComponent, dashboardIndexComponent, sidebarComponent, signupComponent ],
+  providers: [authGuard],
   bootstrap:    [ AppComponent ],
 })
 export class AppModule { }

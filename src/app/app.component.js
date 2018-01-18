@@ -20,6 +20,7 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.logout = function () {
         localStorage.removeItem('token');
+        localStorage.setItem("signupSuccess", "Successfully Logged Out!");
         this.loggedIn = false;
         this._router.navigate(['/login']);
     };

@@ -14,23 +14,9 @@ export class dashboardIndexComponent {
 	token: string;
 
 	constructor(private _indexService: indexService, private _router: Router){
-		this.token = localStorage.getItem("token");
-		if(this.token != undefined){
-			this._indexService.getEmployeeData().subscribe(data => {
-				if(data.error != undefined){
-					localStorage.setItem("loginError","Session Expired! Please login again");
-					localStorage.removeItem("token");
-					this._router.navigate(["/login"]);
-				}
-				else{
-					this.employeeData = data;
-				}
-				
-			});
-		}
-		else{
-			this._router.navigate(["/login"]);
-		}
+		this._indexService.getEmployeeData().subscribe(data => {
+			this.employeeData = data;
+		});
 	}
 
 	deleteEmployee(id): void {
