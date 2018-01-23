@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Router, ActivatedRoute } from '@angular/router';
+import { environment } from '../environment/environment';
 
 @Injectable()
 
@@ -16,7 +17,7 @@ export class authService{
   checkAuth(){
   	let headers = new Headers();
   	headers.append('Authorization', 'Bearer ' + this.token);
-  	return this.http.get("http://localhost:8000/api/checkAuth",{
+  	return this.http.get(environment.serverPath+"/api/checkAuth",{
   		headers: headers
   	})
   	.map((res: Response) => res.json());

@@ -12,6 +12,7 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var router_1 = require("@angular/router");
+var environment_1 = require("../environment/environment");
 var authGuard = (function () {
     function authGuard(http, router) {
         this.http = http;
@@ -21,7 +22,7 @@ var authGuard = (function () {
     authGuard.prototype.checkAuth = function () {
         var headers = new http_1.Headers();
         headers.append('Authorization', 'Bearer ' + this.token);
-        return this.http.get("http://localhost:8000/api/checkAuth", {
+        return this.http.get(environment_1.environment.serverPath + "/api/checkAuth", {
             headers: headers
         })
             .map(function (res) { return res.json(); });

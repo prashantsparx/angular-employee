@@ -11,12 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
+var environment_1 = require("../../environment/environment");
 var signupService = (function () {
     function signupService(http) {
         this.http = http;
     }
     signupService.prototype.create = function (user) {
-        return this.http.post("http://localhost:8000/api/createUser", user)
+        return this.http.post(environment_1.environment.serverPath + "/api/createUser", user)
             .map(function (res) { return res.json(); });
     };
     return signupService;
